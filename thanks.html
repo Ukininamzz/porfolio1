@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You! - Niel Jasper Arangote</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="styles.css"/>
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(37, 99, 235, 0.1), rgba(37, 99, 235, 0.05));
+        }
+        
+        .thank-you-content {
+            background: var(--bg-color);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .thank-you-content h1 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .back-home {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .back-home:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme toggle button -->
+    <button id="theme-toggle" aria-label="Toggle dark mode" class="theme-toggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <h1>Thank You!</h1>
+            <p>Your message has been successfully sent. I will get back to you as soon as possible.</p>
+            <a href="index.html" class="back-home">
+                <i class="fas fa-arrow-left"></i> Back to Homepage
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Apply saved theme if it exists
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+            
+            // Save theme preference
+            localStorage.setItem('theme', 
+                document.body.classList.contains('dark-mode') ? 'dark' : 'light'
+            );
+        });
+    </script>
+</body>
+</html> 
